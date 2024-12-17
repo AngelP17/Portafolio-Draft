@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+<!--
+	Adapted from:
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+	<title>E-Portfolio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+
+	<style>
+		.item .image.fit {
+			width: 200px;
+			height: 200px;
+			object-fit: cover;
+			margin: 0 auto;
+			display: block;
+		}
+		.item .image.fit map.png {
+			max-width: 100%;
+			height: auto;
+			margin: 20px auto;
+		}
+		#header {
+			background-color: rgb(0, 0, 0);
+		}
+
+		.social-icons {
+			display: flex;
+			justify-content: center; /* Center icons horizontally */
+			align-items: center; /* Vertically center icons */
+			padding: 10px 0; /* Add padding top/bottom */
+		}
+
+		.social-icons a {
+			margin: 0 10px; /* Equal margin on both sides */
+			display: inline-flex;
+			align-items: center;
+			color: #ffffff; /* Default icon color */ /* White color for icons */
+			transition: color 0.3s ease; /* Smooth transition for hover effect */
+		}
+
+
+		.social-icons a:hover {
+			color: #007bff; /* Change icon color on hover to consistent blue*/
+		}
+
+
+		.social-icons .label {
+			clip: rect(1px, 1px, 1px, 1px);
+			position: absolute;
+			height: 1px;
+			width: 1px;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		#logo {
+			text-align: center; /* Center the logo content */
+			padding: 20px 0; /* Add padding to separate from top and social icons */
+		}
+
+		#logo img {
+			display: block; /* Make image a block element for better centering */
+			margin: 0 auto 10px; /* Auto margin for horizontal centering + margin below image */
+		}
+
+		#logo h1 {
+			margin-bottom: 0; /* Reduce margin below the main h1 */
+
+		}
+
+		#logo p {
+			margin-top: 5px; /* Reduce margin above the <p> */
+		}
+		#nav {
+			text-align: left; /* Align nav items to the left */
+		}
+
+		#nav ul {
+			list-style: none; /* Remove bullet points */
+			padding: 0;       /* Remove default padding */
+			margin: 20px 0; /*  Added some margin to separate from logo */
+		}
+
+		#nav li {
+			margin-bottom: 10px; /* Add spacing between list items */
+
+		}
+
+		#nav a {
+			color: #ffffff; /* White color for nav links */
+			display: block; /* Make links fill full width of li */
+			padding: 5px 15px;   /* Add some padding around links*/
+			text-decoration: none; /* Remove underlines from links*/
+			transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for hover effect */
+
+		}
+
+		#nav a {
+			color: #ffffff; /* White color for nav links */
+			display: block;
+			padding: 5px 15px;
+			text-decoration: none;
+			transition: background-color 0.3s ease, color 0.3s ease;
+		}
+
+		#nav .icon {
+			margin-right: 10px;
+			color: #ffffff; /* Initially white, will change on hover */
+			transition: color 0.3s ease; /* Add transition for icon color */
+
+		}
+
+
+		#nav a:hover .icon { /* Target icon on link hover */
+			color: #ffffff;  /* White icons on hover */
+		}
+
+
+		/* Social icons - keep these styles the same */
+		.social-icons a {
+			margin-right: 10px;
+			display: inline-flex;
+			align-items: center;
+			color: #ffffff;
+			transition: color 0.3s ease;
+		}
+		.social-icons a:hover {
+			color: #990000;
+		}
+
+		.button.scrolly { /* Target the button specifically */
+			background-color: #000000; /* Dark red */
+			color: #ffffff; /* White text color */
+			border: none;  /* Remove default button border */
+			padding: 10px 20px; /* Adjust padding as needed */
+			text-decoration: none;
+			transition: background-color 0.3s ease;  /* Smooth transition for hover effect */
+		}
+
+		.button.scrolly:hover {
+			background-color: #000000; /* Slightly lighter red on hover */
+		}
+
+		#logo img {  /* Style for avatar spacing */
+			display: block;
+			margin: 0 auto 40px; /* Increased margin below the image */
+		}
+
+		#about .featured {
+			max-width: 75%;
+			height: auto;
+			display: block;
+			margin: 20px auto;
+		}
+		#contact p { /* Target paragraphs within the contact section */
+			text-align: left;
+		}
+		#portfolio p { /* Target paragraphs within the contact section */
+			text-align: left;
+		}
+		#about p { /* Target paragraphs within the contact section */
+			text-align: left;
+		}
+
+		/* Style the form elements for better appearance and spacing*/
+		#contact label {
+			display: block;  /* Makes labels stack vertically */
+			margin-bottom: 10px;  /* Adds space below each label */
+		}
+
+		#contact input[type="text"],
+		#contact input[type="email"],
+		#contact textarea {
+			width: 100%;  /* Make input fields take up full width */
+			padding: 8px;
+			border: 1px solid #ccc;
+			box-sizing: border-box; /* Includes padding and border in element's total width */
+			margin-bottom: 10px; /* Add space below input fields */
+
+		}
+
+		#contact button[type="submit"] {
+			background-color: #000000;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		#contact button[type="submit"]:hover {
+			background-color: #cc0000;  /* Slightly lighter red on hover */
+
+		}
+
+
+	</style>
+
+</head>
+<body class="is-preload">
+
+<!-- Header -->
+<div id="header">
+
+	<div class="top">
+
+		<!-- Logo -->
+		<div id="logo">
+			<img src="images/avatar.png" alt="Avatar" style="width: 90px; height: 55px; border-radius: 50%; display: block; margin: 20px auto;">
+			<h1 id="title">Angel L. Pinzon</h1>
+			<p>Computer Engineer</p>
+		</div>
+
+
+		<!-- Nav -->
+		<nav id="nav">
+			<ul>
+				<li><a href="#top" id="top-link"><span class="icon solid fa-home">Home</span></a></li>
+				<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
+				<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
+				<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact Me</span></a></li>
+			</ul>
+		</nav>
+
+	</div>
+
+	<div class="bottom">
+		<!-- Added class "social-icons" -->
+		<ul class="icons social-icons">
+			<!-- LinkedIn with Download button -->
+			<li><a href="https://www.linkedin.com/in/angel-l-pinzon-6715852a0/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a>
+				<a href="your_linkedin_resume.pdf" download class="icon solid fa-download" title="Download Resume"><span class="label">Download Resume</span></a> </li>
+			<!-- Git button -->
+			<li><a href="https://github.com/AngelP17" class="icon brands fa-github"><span class="label">Github</span></a>
+			<li><a href="mailto:angelpinzon1706@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+
+		</ul>
+
+	</div>
+
+
+</div>
+
+<!-- Main -->
+<div id="main">
+
+	<!-- Intro -->
+	<section id="top" class="one dark cover">
+		<div class="container">
+
+			<header>
+				<h2 class="alt"> <strong> Hey there, welcome! My name is Angel</strong>,
+				</h2>
+				<p>Thanks for visiting, you will find some of my programming work here :)<br />
+				</p>
+			</header>
+
+			<footer> <a href="#portfolio" class="button scrolly">Check out some of my work</a> </footer>
+
+		</div>
+	</section>
+
+	<!-- Portfolio -->
+	<section id="portfolio" class="two">
+		<div class="container">
+
+			<header>
+				<h2> <strong>E-PORTFOLIO</strong>
+				</h2>
+			</header>
+
+			<p>
+				Some of my projects include but are not limited to:
+				Linux software engineering,VHDL, XILINX Vivado, information retrieval, databases,
+				cloud computing, among many others.
+			</p>
+
+			<div class="row">
+				<div class="col-4 col-12-mobile">
+					<article class="item">
+						<a href="#" class="image fit"><img src="images/weather.png" alt="weather app" /></a>
+						<header>
+							<h3>Weather App</h3>
+						</header>
+					</article>
+					<article class="item">
+						<a href="#" class="image fit"><img src="images/travel.png" alt="Travel Buddy" /></a>
+						<header>
+							<h3>Travel Buddy</h3>
+						</header>
+					</article>
+				</div>
+				<div class="col-4 col-12-mobile">
+					<article class="item">
+						<a href="#" class="image fit"><img src="images/math.png" alt="Math Tutor" /></a>
+						<header>
+							<h3>Math Tutor</h3>
+						</header>
+					</article>
+					<article class="item">
+						<a href="#" class="image fit"><img src="images/unit.png" alt="Unit Converter"/></a>
+						<header>
+							<h3>Unit Converter</h3>
+						</header>
+					</article>
+				</div>
+				<div class="col-4 col-12-mobile">
+					<article class="item">
+						<a href="#" class="image fit"><img src="images/map.png" alt="Map Explorer" /></a>
+						<header>
+							<h3>Map Explorer</h3>
+						</header>
+					</article>
+					<article class="item">
+						<a href="#" class="image fit"><img src="images/research.png" alt="Research Helper" /></a>
+						<header>
+							<h3>Research Helper</h3>
+						</header>
+					</article>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<!-- About Me -->
+	<section id="about" class="three">
+		<div class="container">
+
+			<header>
+				<h2>About Me</h2>
+			</header>
+			<a href="#" class="image featured"><img src="images/me.png" alt="My Avatar" /></a>
+			<p>I am pursuing a degree in Computer Engineering at the University of Arkansas, which I expect to complete in 2025.
+				Currently, I work as a Course Assistant, where my role is crucial in enhancing the academic experience through diligent
+				administrative support and participation in departmental projects. Our team at the University of Arkansas supports the
+				First Year Engineering program by providing comprehensive assistance and facilitating communication between students and faculty.
+			</p>
+
+		</div>
+	</section>
+
+	<<!-- Contact -->
+	<section id="contact" class="four">
+		<div class="container">
+
+			<header>
+				<h2><strong>Contact Me</strong></h2>
+			</header>
+
+			<p>
+				You can access to my socials or download my resume on the left side bar.
+			    Drop any questions or inquiry you may have on the box below,
+				make sure to include the right information and I will get back
+				as soon as I can.
+			</p>
+
+			<form
+					action="https://formspree.io/f/xdkorzwz"
+					method="POST"
+					enctype="multipart/form-data"
+			>
+				<label>
+					Your name:
+					<input type="text" name="name" placeholder="Type your name here" />
+				</label>
+				<label>
+					Your Email:
+					<input type="email" name="email" placeholder="Type your email here"/>
+				</label>
+				<label>
+					Your Message:
+					<textarea name="message" placeholder="Tell me, how can I help today?" ></textarea>
+				</label>
+				<label>
+					Attach your file here:
+					<input type="file" name="upload">
+				</label>
+				<button type="submit">Send</button>
+			</form>
+
+		</div>
+	</section>
+
+</div>
+
+<!-- Footer -->
+<div id="footer">
+
+	<!-- Copyright -->
+	<ul class="copyright">
+		<li>© Design Framework adapted from: HTML5 UP </li><li>Design: <a href="http://html5up.net"> All rights reserved.</a></li>
+	</ul>
+
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/browser.min.js"></script>
+<script src="assets/js/breakpoints.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
