@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Project View</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+  <style>
+    .project-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .project-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .project-details {
+      margin-top: 20px;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: #000000;
+      color: white !important;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .project-links {
+      margin-top: 20px;
+    }
+
+    .github-button {
+      display: inline-block;
+      background: #4a9ea1;
+      color: white !important;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .github-button:hover {
+      background: #3a8e91;
+    }
+
+    .language-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px 16px;
+      background: #4a9ea1;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .language-toggle:hover {
+      background: #3a8e91;
+    }
+  </style>
+</head>
+<body class="is-preload">
+<div class="project-container">
+  <button id="languageToggle" class="language-toggle">ES</button>
+  <a href="javascript:window.close()" class="back-button">← Back to Portfolio</a>
+
+  <div id="project-content">
+    <!-- Content will be loaded dynamically via JavaScript -->
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script>
+  let currentLanguage = 'en';
+
+  // Get project ID from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const projectId = urlParams.get('project');
+
+  // Project data with bilingual support
+  const projects = {
+    '1': {
+      title: {
+        en: 'Document Search Engine - Information Retrieval',
+        es: 'Motor de Búsqueda de Documentos - Recuperación de Información'
+      },
+      image: 'images/weather.png',
+      description: {
+        en: 'Developed a robust document search engine implementing advanced information retrieval techniques. Features include efficient indexing, query processing, and relevant document ranking using TF-IDF algorithms.',
+        es: 'Desarrollé un motor de búsqueda de documentos implementando técnicas avanzadas de recuperación de información. Incluye indexación eficiente, procesamiento de consultas y clasificación de documentos relevantes usando algoritmos TF-IDF.'
+      },
+      technologies: 'HTML5, CSS, C++, indexing, query processing, search algorithms',
+      githubPath: 'https://github.com/AngelP17/Portafolio/tree/main/Projects/IR'
+    },
+    '2': {
+      title: {
+        en: 'Karpinski Operations Implementation - Cloud Computing',
+        es: 'Implementación de Operaciones Karpinski - Computación en la Nube'
+      },
+      image: 'images/travel.png',
+      description: {
+        en: 'Implemented Karpinski operations for cloud computing environments, focusing on MapReduce optimization and security risk management. Enhanced data processing efficiency and system reliability.',
+        es: 'Implementé operaciones Karpinski para entornos de computación en la nube, enfocándome en la optimización de MapReduce y gestión de riesgos de seguridad. Mejoré la eficiencia del procesamiento de datos y la fiabilidad del sistema.'
+      },
+      technologies: 'Cloud/OS Management, MapReduce, Security Risk, Spark',
+      githubPath: 'https://github.com/AngelP17/Portafolio/tree/main/Projects/CC'
+    },
+    '3': {
+      title: {
+        en: 'Microprocessor System Design and Testing - Synthesis and Design',
+        es: 'Diseño y Prueba de Sistemas de Microprocesadores - Síntesis y Diseño'
+      },
+      image: 'images/research.png',
+      description: {
+        en: 'Designed and tested microprocessor systems using VHDL and ModelSim. Implemented virtual machine environments for system validation and performance testing.',
+        es: 'Diseñé y probé sistemas de microprocesadores usando VHDL y ModelSim. Implementé entornos de máquinas virtuales para validación de sistemas y pruebas de rendimiento.'
+      },
+      technologies: 'VHDL, C#, ModelSim, Virtual Machine Environments',
+      githubPath: 'https://github.com/AngelP17/Portafolio/tree/main/Projects/SM'
+    },
+    '4': {
+      title: {
+        en: 'Autonomous Vehicle: Software and Hardware Implementation',
+        es: 'Vehículo Autónomo: Implementación de Software y Hardware'
+      },
+      image: 'images/weather.png',
+      description: {
+        en: 'Created embedded systems for autonomous vehicle control using XILINX and FreeRTOS. Developed APIs for sensor integration and real-time decision making.',
+        es: 'Creé sistemas embebidos para control de vehículos autónomos usando XILINX y FreeRTOS. Desarrollé APIs para integración de sensores y toma de decisiones en tiempo real.'
+      },
+      technologies: 'XILINX, C#, FREERTOS, API',
+      githubPath: 'https://github.com/AngelP17/Portafolio/tree/main/Projects/EBS'
+    },
+    '5': {
+      title: {
+        en: 'LaserTag Game Full Stack Implementation',
+        es: 'Implementación Full Stack de Juego LaserTag'
+      },
+      image: 'images/unit.png',
+      description: {
+        en: 'Developed a full-stack laser tag game system with real-time player tracking, score management, and interactive user interface. Implemented both frontend and backend components.',
+        es: 'Desarrollé un sistema completo de juego laser tag con seguimiento de jugadores en tiempo real, gestión de puntuación e interfaz de usuario interactiva. Implementé componentes frontend y backend.'
+      },
+      technologies: 'C++, JS, Front/Back End development and implementation, API',
+      githubPath: 'https://github.com/AngelP17/Portafolio/tree/main/Projects/SFE'
+    },
+    '6': {
+      title: {
+        en: '2D Game Interactive Interface',
+        es: 'Interfaz Interactiva de Juego 2D'
+      },
+      image: 'images/php.png',
+      description: {
+        en: 'Created an interactive 2D game interface using modern web technologies. Implemented game mechanics, user interactions, and responsive design principles.',
+        es: 'Creé una interfaz de juego 2D interactiva usando tecnologías web modernas. Implementé mecánicas de juego, interacciones de usuario y principios de diseño responsivo.'
+      },
+      technologies: 'JS, Java, JSON, Python, Apache',
+      githubPath: 'https://github.com/AngelP17/Portafolio/tree/main/Projects/2DG'
+    }
+  };
+
+  // Function to update content based on language
+  function updateContent(project, language) {
+    const content = `
+      <h2>${project.title[language]}</h2>
+      <img src="${project.image}" class="project-image" alt="${project.title[language]}">
+      <div class="project-details">
+        <h3>${language === 'en' ? 'Description' : 'Descripción'}</h3>
+        <p>${project.description[language]}</p>
+
+        <h3>${language === 'en' ? 'Technologies Used' : 'Tecnologías Utilizadas'}</h3>
+        <p>${project.technologies}</p>
+
+        <div class="project-links">
+          <a href="${project.githubPath}" target="_blank" class="github-button">
+            ${language === 'en' ? 'View Project on GitHub' : 'Ver Proyecto en GitHub'}
+          </a>
+        </div>
+      </div>
+    `;
+    document.getElementById('project-content').innerHTML = content;
+    document.getElementById('languageToggle').textContent = language === 'en' ? 'ES' : 'EN';
+  }
+
+  // Toggle language
+  document.getElementById('languageToggle').addEventListener('click', function() {
+    currentLanguage = currentLanguage === 'en' ? 'es' : 'en';
+    const project = projects[projectId];
+    if (project) {
+      updateContent(project, currentLanguage);
+    }
+  });
+
+  // Load project when page loads
+  function loadProject() {
+    const project = projects[projectId];
+    if (project) {
+      updateContent(project, currentLanguage);
+    }
+  }
+
+  // Load project when page loads
+  window.onload = loadProject;
+</script>
+</body>
+</html>
